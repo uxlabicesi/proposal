@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador UXLAB</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <!--  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+ -->
+
+    <script src="src/dist/html2pdf.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="ux-form container">
+        <h1>Generador de propuestas</h1>
+        <section>
+            <h2> Información general </h2>
+            <div class="container">
+                <div class="mb-3">
+                    <label for="ux-fc-client" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" id="ux-fc-client" placeholder="Grupo Coomeva">
+                </div>
+
+                <div class="mb-3">
+                    <label for="ux-fc-project" class="form-label">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="ux-fc-project"
+                        placeholder="Diagnóstico de UX - Portal Busca el doctor">
+                </div>
+
+                <h2> Programa a construir </h2>
+
+                <br>
+
+                <div class="mb-3">
+                    <label for="ux-fc-project-type" class="form-label">¿Qué tipo de programa deseas construir?</label>
+                    <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
+                        <option selected>Selecciona el tipo de programa</option>
+                        <option value="1">Diagnóstico</option>
+                        <option value="2">Bolsa de horas</option>
+                        <option value="3">A la medida</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="ux-fc-project-hours" class="form-label">Número de horas</label>
+                    <input type="number" class="form-control" id="ux-fc-project-hours"
+                        placeholder="¿Cuántas horas tiene el programa?">
+                </div>
+                <div class="mb-3">
+                    <label for="ux-fc-project-complexity" class="form-label">Nivel de complejidad</label>
+                    <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
+                        <option selected>Selecciona el nivel de complejidad</option>
+                        <option value="1">Inicial</option>
+                        <option value="2">Intermedio</option>
+                        <option value="3">Avanzado</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="button" id="ux-btn-update" class="btn btn-primary">Actualizar</button>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <br><br><br>
+
+    <main id="ux-main-container" class="container">
+        <img src="images/banner-educon.jpg" class="img-fluid" alt="banner-educon">
+        <section>
+            <div>
+                <div class="ux-section-title">
+                    I. Introduccion
+                </div>
+                <p>
+                    El Centro de Consultoría y Educación Continua ofrece servicios de capacitación y consultoría a
+                    organizaciones que, como <span class="client-text"> XXXXXXXXXXXX </span>, buscan fortalecer su
+                    conocimiento en temas o áreas específicas, las
+                    cuales pueden ser cubiertas con programas curriculares y docentes más convenientes. Los servicios
+                    pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las instalaciones de la empresa o a
+                    través de internet.
+                </p>
+                <p>
+                    Los programas de capacitación empresarial del Centro de Consultoría y Educación Continua son
+                    desarrollados a la medida de las necesidades de la empresa y promueven la adquisición de
+                    conocimientos, habilidades y actitudes que conducen a la formación de modelos de comportamientos valiosos y deseables en los
+                    profesionales vinculados a la organización.
+                </p>
+            </div>
+            <div>
+                <div class="ux-section-title">
+                    II. Objetivos
+                </div>
+                <p>
+                    El plan de mentoring descrito en la presente propuesta tiene como propósito evaluar los productos
+                    digitales de la organización con el fin de encontrar los puntos “de dolor” y que están afectando la
+                    experiencia de los usuarios para posteriormente proponer mejoras que ejemplifican la interacción
+                    adecuada del producto.
+                </p>
+            </div>
+            <div>
+                <div class="ux-section-title">
+                    III. Dirigido a
+                </div>
+                <p>
+                    El acompañamiento descrito en la presente propuesta está dirigido a <span class="client-text">
+                        XXXXXXXXXXXX </span>
+                </p>
+            </div>
+            <div>
+                <div class="ux-section-title">
+                    IV. Estructura del Programa
+                </div>
+                <p> El proyecto se estructura desde las necesidades expuestas en la revisión de los productos de la
+                    organización, tanto para productos actuales como a futuros desarrollos. Se podrá contar
+                    entrenamiento* en las fases que la organización estime conveniente.
+                    *Los entrenamientos tendrán un costo adicional al plan de horas que se tenga para el mes y requieren
+                    de una cotización acotada al tema en cuestión.</p>
+
+                <p>De común acuerdo, la organización y el equipo de UXLab Icesi establecerán los objetivos para cada
+                    mes.</p>
+
+                <p>Algunos de los servicios de evaluación que pueden tener lugar durante el proceso podrían ser:</p>
+
+                <b>Evaluación de expertos / Pruebas heurísticas</b>
+                <p>La evaluación heurística es un método de inspección en el que un grupo reducido de expertos, en base
+                    a su propia experiencia, fundamentándose en reconocidos principios de usabilidad (heurísticos), y
+                    apoyándose en guías elaboradas para tal fin, evalúan de forma independiente el producto,
+                    contrastando finalmente los resultados con el resto de evaluadores. (...) Utilizando principios
+                    heurísticos de accesibilidad y llevando a cabo la prueba con evaluadores con experiencia y
+                    conocimientos de accesibilidad, este método permite no sólo descubrir problemas de uso, sino también
+                    de acceso. Hassan (2004).</p>
+
+                <b>Evaluación con usuario / Pruebas de usabilidad</b>
+                <p>Las pruebas con usuarios reales son técnicas de evaluación de usabilidad tradicionalmente usadas en
+                    DCU. Se trata de pruebas realizadas en “laboratorio”, en las que se observa cómo un grupo de
+                    usuarios, reales o potenciales, lleva a cabo una serie de tareas encomendadas, para posteriormente
+                    realizar un análisis de los problemas de usabilidad con los que se han encontrado durante la prueba.
+                    Hassan (2004).</p>
+
+                <b>Pruebas generativas</b>
+                <p>Para identificar soluciones nuevas e innovadoras, debe definir el problema que está tratando de
+                    resolver. Esto requiere que usted entienda verdaderamente la vida, los entornos, los
+                    comportamientos, las actitudes / opiniones y las percepciones de las personas.</p>
+
+                <b>User persona</b>
+                <p>Persona se refiere a uno o unos personajes ficticios creados con motivo de representar a los
+                    usuarios posibles de un producto a través de una buena cantidad de investigaciones cualitativas y
+                    cuantitativas. Persona nos contesta la pregunta “¿Para quién diseñamos?” Es una herramienta poderosa
+                    basada en conclusiones de investigaciones en ayudar la creación de funciones de producto optimizando
+                    la investigación de UX. No sólo representa a algún usuario concreto sino al conjunto de ellos, se
+                    puede entender como el personaje típico de la conducta, la actitud, las habilidades y los contextos
+                    de todos los usuarios potenciales. Chang (2017).
+                </p>
+
+            </div>
+            <div>
+                <div class="ux-section-title">
+                    V. Duración
+                </div>
+                <p>
+                    En este modelo se hace un mentoring por horas mensuales según el plan acordado.
+                </p>
+                <p>
+                    Al finalizar cada ciclo se entregará un reporte de horas que soporte los hitos logrados o en proceso
+                    de desarrollo.
+                </p>
+            </div>
+
+            <div>
+
+                <div class="ux-section-title">
+                    VI. Horario y Lugar
+                </div>
+
+                <p>
+                    UXLab Icesi ayuda a las organizaciones a incorporar la UX a su proceso de desarrollo a través de la
+                    sensibilización y entendimiento del concepto, la investigación de usuarios, la capacitación de
+                    equipos de diseño/desarrollo y la evaluación de sus productos digitales.
+                </p>
+
+                <p>
+                    UXLab Icesi es una iniciativa del Departamento de diseño de la Universidad Icesi e Innlab que busca
+                    acercar las organizaciones al concepto de Experiencia de Usuario a través de entrenamiento y
+                    servicios de evaluación y consultoría.
+                </p>
+
+                <p>
+                    Es un espacio para la investigación, formación y mejora en el conocimiento de las técnicas y
+                    metodologías que permiten generar productos altamente innovadores, así como mejorar productos
+                    existentes gracias a técnicas de diseño, prototipado, evaluación y mejora en sus funcionalidades. El
+                    UXLab cuenta con el apoyo de expertos en Diseño Centrado en el Usuario (DCU), User Research,
+                    usabilidad, accesibilidad, testing, experiencia de usuario (UX), arquitectura de información, diseño
+                    de interacción entre otras. Cuenta
+                    además con recursos tecnológicos, metodológicos y laboratorios dotados y acondicionados para la
+                    realización de cada uno de los estudios y entrenamiento que demanden los proyectos. Expertos que
+                    podrían incorporarse al proyecto según los requerimientos del ciclo.
+                </p>
+                <h3>Facilitadores expertos</h3>
+                <ul>
+                    <li>
+                        <h4>JAVIER AGUIRRE</h4>
+                        <h5>Ph. D / Diseño & Creación</h5>
+                        <h6>Diseño Social - Innovación Social - Diseño y nuevas Interfaces - Interacción Persona
+                            Ordenador -
+                            Desarrollo de Nuevos Productos - Apropiación tecnológica.</h6>
+                    </li>
+                    <li>
+                        <h4> JOSÉ A. MONCADA</h4>
+                        <h5>MSc. / Tecnologías de la Información y Comunicaciones | MSc. Ciencia de Datos</h5>
+                        <h6>Interacción Persona Ordenador - Análisis de datos - Programación - Ingeniería de Software -
+                            Agile -
+                            Ecosistemas de aplicaciones.</h6>
+                    </li>
+                    <li>
+                        <h4>NÉSTOR TOBAR A.</h4>
+                        <h5>Ma. / Diseño de Experiencia de Usuario | Ma. Gestión de Innovación</h5>
+                        <h6>Experiencia de Usuario - Arquitectura de la información - Diseño de Interacción - Gestión de
+                            la
+                            Innovación - Diseño de interfaz de Usuario.</h6>
+                    </li>
+                </ul>
+                </p>
+            </div>
+
+            <div>
+                <div class="ux-section-title">
+                    VII. Inversión
+                </div>
+                <p>
+                    En el modelo de diagnóstico se construye una cotización basada en las horas
+                    requeridas para ejecutar las pruebas correspondientes dada la complejidad del
+                    producto digital indicado por el cliente
+
+                    <!--En este modelo se cotizan tres planes por cantidad de horas, esta bolsa de horas se repartirá entre
+                    las actividades que se requieran en cada ciclo. A continuación, presentamos los planes.-->
+
+                    <b>
+                        <h6>Valor del programa en pesos*</h6>
+                    </b>
+                    <p><span id="program-value-text">$4.100.000</span></p>
+                    <p>* Mas 1,5% de impuesto procultura</p>
+
+                </p>
+            </div>
+
+            <div>
+                <div class="ux-section-title">
+                    VIII. Compromisos
+                </div>
+                <p> A continuación, se describen el conjunto de compromisos para la realización del presente proyecto
+                </p>
+                <ul>
+                    <li>El cliente se compromete a facilitar los recursos técnicos, humanos y de información
+                        necesarios para el desarrollo del proyecto.</li>
+                    <li> El cumplimiento de los tiempos estimados dependerá de la entrega oportuna de la información
+                        requerida, reuniones pactadas o de la retroalimentación de los procesos que a bien se
+                        realicen.</li>
+                    <li>La Universidad se compromete a velar por el tratamiento respetuoso de los derechos de autor
+                        y de la información que sea suministrada.</li>
+                    <li>La universidad se reserva el derecho a utilizar el proceso y/o resultado del estudio de la
+                        consultoría para fines netamente académicos velando por no afectar la integridad del cliente
+                        o revelar datos considerados como confidenciales.</li>
+                </ul>
+
+
+            </div>
+
+            <div>
+                <div class="ux-section-title">
+                    IX. Información de contacto
+                </div>
+                <p>
+                    <br>
+                    <b>ANGELA MARIA BONILLA C.</b><br>
+                    Ejecutiva de Relaciones Empresariales <br>
+                    Tel. (572) 555 23 34 Ext. 8016<br>
+                    Cel 314 799 1062<br>
+                    E-mail: ambonilla@icesi.edu.co<br>
+                    <br>
+                    <b>PATRICIA RUIZ B.</b>
+                    Directora Mercadeo Institucional<br>
+                    Tel. (572) 555 23 34 Ext. 8711<br>
+                    E-mail: pruiz@icesi.edu.co<br>
+                </p>
+            </div>
+        </section>
+    </main>
+    <br>
+    <br>
+    <script src="main.js"></script>
+</body>
+
+</html>
