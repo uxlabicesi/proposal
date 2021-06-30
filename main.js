@@ -68,8 +68,6 @@ window.addEventListener("load", function () {
     let projectNameMainTitleTag = document.querySelector("#ux-program-name");
     projectNameMainTitleTag.innerHTML = projectNameTag.value;
     
-    let hasHoursSwitchTag = document.querySelector("#ux-hour-switch");
-
     let projectHoursTag = document.querySelector("#ux-fc-project-hours");
     let projectPriceTag = document.querySelector("#program-value-text");
     let projectTypeSelectorTag = document.querySelector("#ux-fc-project-type");
@@ -79,7 +77,27 @@ window.addEventListener("load", function () {
 
     let teamMembersContainerTag = document.querySelector("#ux-experts-container");
 
+    let usabilityTestCheckTag = document.querySelector("#ux-test-ut-check");
+    usabilityTestCheckTag.addEventListener("change", function () {        
+        let container = document.querySelector("#ux-test-ut-container");        
+        if(usabilityTestCheckTag.checked === true){            
+            container.classList.remove('visually-hidden');
+        }else{
+            container.classList.add('visually-hidden');
+        }
+    });
 
+    let heuristicTestCheckTag = document.querySelector("#ux-test-ht-check");
+    heuristicTestCheckTag.addEventListener("change", function () {        
+        let container = document.querySelector("#ux-test-ht-container");        
+        if(heuristicTestCheckTag.checked === true){            
+            container.classList.remove('visually-hidden');
+        }else{
+            container.classList.add('visually-hidden');
+        }
+    });
+
+    let hasHoursSwitchTag = document.querySelector("#ux-hour-switch");
     hasHoursSwitchTag.addEventListener("change", function () {        
         let container = document.querySelector("#ux-fc-project-hours-container");        
         if(hasHoursSwitchTag.checked === true){            
@@ -94,7 +112,6 @@ window.addEventListener("load", function () {
             case '1': // Diagnostico
                 typeOfProject = 1;
                     console.log("Diagnóstico");
-
                 break;
             case '2': // Bolsa de horas
                 typeOfProject = 2;
@@ -119,13 +136,26 @@ window.addEventListener("load", function () {
         });
 
         // Program price update
+        let programValue = 0;
+        let pricePerHour = 350000;
+        
         if(hasHoursSwitchTag.checked === true){            
-            let numberOfHours = parseInt(projectHoursTag.value);
-            let pricePerHour = 333000;
-            let programValue = numberOfHours * pricePerHour;
+            let numberOfHours = parseInt(projectHoursTag.value);            
+            programValue = numberOfHours * pricePerHour;
             projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
         }else{
-            projectPriceTag.innerHTML = "PENDIENTE"
+            if(heuristicTestCheckTag.checked === true){ 
+                const number = parseInt(document.querySelector("#ux-test-ht-number").value); 
+                const duration = parseInt(document.querySelector("#ux-test-ht-duration").value);
+                programValue += number*(duration/60)*pricePerHour;
+                projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
+            }
+            if(usabilityTestCheckTag.checked === true){ 
+                const number = parseInt(document.querySelector("#ux-test-ut-number").value); 
+                const duration = parseInt(document.querySelector("#ux-test-ut-duration").value); 
+                programValue += number*(duration/60)*pricePerHour;
+                projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
+            }
         }
 
         // Expert team update
