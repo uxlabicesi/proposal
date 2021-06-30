@@ -12,35 +12,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <!--  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
- -->
-
     <script src="src/dist/html2pdf.bundle.min.js"></script>
-
 </head>
 
 <body>
     <div class="ux-form container">
         <h1>Generador de propuestas</h1>
         <section>
-            <h2> Información general </h2>
+
             <div class="container">
                 <div class="mb-3">
                     <label for="ux-fc-client" class="form-label">Cliente</label>
-                    <input type="text" class="form-control" id="ux-fc-client" placeholder="Grupo Coomeva">
+                    <input type="text" class="form-control" id="ux-fc-client" placeholder="Nuestro cliente preferido">
                 </div>
 
                 <div class="mb-3">
                     <label for="ux-fc-project" class="form-label">Nombre del proyecto</label>
-                    <input type="text" class="form-control" id="ux-fc-project"
-                        placeholder="Diagnóstico de UX - Portal Busca el doctor">
+                    <input type="text" class="form-control" id="ux-fc-project" placeholder="Proyecto increible de UX">
                 </div>
 
-                <h2> Programa a construir </h2>
-
-                <br>
+                <div class="mb-3">
+                    <label for="" class="form-label">¿Quiénes van a participar?</label>
+                    <div class="container" id="ux-team-container">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" id="ux-team-check-1" checked>
+                            <label class="form-check-label" for="ux-team-check-1">Daniel Gómez</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2" id="ux-team-check-2" checked>
+                            <label class="form-check-label" for="ux-team-check-1">Javier A. Aguirre</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="3" id="ux-team-check-3" checked>
+                            <label class="form-check-label" for="ux-team-check-1">José A. Moncada</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="4" id="ux-team-check-4" checked>
+                            <label class="form-check-label" for="flexCheckChecked1">Néstor A. Tobar</label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="mb-3">
                     <label for="ux-fc-project-type" class="form-label">¿Qué tipo de programa deseas construir?</label>
@@ -51,22 +62,88 @@
                         <option value="3">A la medida</option>
                     </select>
                 </div>
-                <div class="mb-3">
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="ux-hour-switch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">¿Se tiene el número de horas?</label>
+                </div>
+
+                <br>
+
+                <div id="ux-fc-project-hours-container" class="mb-3 visually-hidden">
                     <label for="ux-fc-project-hours" class="form-label">Número de horas</label>
                     <input type="number" class="form-control" id="ux-fc-project-hours"
                         placeholder="¿Cuántas horas tiene el programa?">
                 </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">¿Qué actividades de evaluación se incluyen?</label>
+                    <div class="container" id="ux-team-container">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Pruebas de Usabilidad
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Evaluación Heurística
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="mb-3">
+                    <label for="" class="form-label">¿Qué actividades de diseño se incluyen?</label>
+                    <div class="container" id="ux-team-container">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Pruebas de Usabilidad
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Evaluación Heurística
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">¿Qué actividades de prototipado se incluyen?</label>
+                    <div class="container" id="ux-team-container">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Pruebas de Usabilidad
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Evaluación Heurística
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+
                 <div class="mb-3">
                     <label for="ux-fc-project-complexity" class="form-label">Nivel de complejidad</label>
                     <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
                         <option selected>Selecciona el nivel de complejidad</option>
-                        <option value="1">Inicial</option>
+                        <option value="1">Básico</option>
                         <option value="2">Intermedio</option>
                         <option value="3">Avanzado</option>
                     </select>
                 </div>
+
+                <br>
                 <div class="mb-3">
                     <button type="button" id="ux-btn-update" class="btn btn-primary">Actualizar</button>
+                    <button type="button" id="ux-btn-pdf" class="btn btn-primary">Generar PDF</button>
                 </div>
 
             </div>
@@ -77,6 +154,10 @@
 
     <main id="ux-main-container" class="container">
         <img src="images/banner-educon.jpg" class="img-fluid" alt="banner-educon">
+
+        <div id="ux-program-name" class="ux-section-title">
+        </div>
+
         <section>
             <div>
                 <div class="ux-section-title">
@@ -87,13 +168,15 @@
                     organizaciones que, como <span class="client-text"> XXXXXXXXXXXX </span>, buscan fortalecer su
                     conocimiento en temas o áreas específicas, las
                     cuales pueden ser cubiertas con programas curriculares y docentes más convenientes. Los servicios
-                    pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las instalaciones de la empresa o a
+                    pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las instalaciones de la
+                    empresa o a
                     través de internet.
                 </p>
                 <p>
                     Los programas de capacitación empresarial del Centro de Consultoría y Educación Continua son
                     desarrollados a la medida de las necesidades de la empresa y promueven la adquisición de
-                    conocimientos, habilidades y actitudes que conducen a la formación de modelos de comportamientos valiosos y deseables en los
+                    conocimientos, habilidades y actitudes que conducen a la formación de modelos de comportamientos
+                    valiosos y deseables en los
                     profesionales vinculados a la organización.
                 </p>
             </div>
@@ -113,8 +196,8 @@
                     III. Dirigido a
                 </div>
                 <p>
-                    El acompañamiento descrito en la presente propuesta está dirigido a <span class="client-text">
-                        XXXXXXXXXXXX </span>
+                    El acompañamiento descrito en la presente propuesta está dirigido a
+                    <span class="client-text"> XXXXXXXXXXXX </span>
                 </p>
             </div>
             <div>
@@ -201,36 +284,22 @@
                     existentes gracias a técnicas de diseño, prototipado, evaluación y mejora en sus funcionalidades. El
                     UXLab cuenta con el apoyo de expertos en Diseño Centrado en el Usuario (DCU), User Research,
                     usabilidad, accesibilidad, testing, experiencia de usuario (UX), arquitectura de información, diseño
-                    de interacción entre otras. Cuenta
-                    además con recursos tecnológicos, metodológicos y laboratorios dotados y acondicionados para la
+                    de interacción entre otras. Cuenta además con recursos tecnológicos, metodológicos y laboratorios
+                    dotados y acondicionados para la
                     realización de cada uno de los estudios y entrenamiento que demanden los proyectos. Expertos que
                     podrían incorporarse al proyecto según los requerimientos del ciclo.
                 </p>
-                <h3>Facilitadores expertos</h3>
-                <ul>
-                    <li>
-                        <h4>JAVIER AGUIRRE</h4>
-                        <h5>Ph. D / Diseño & Creación</h5>
-                        <h6>Diseño Social - Innovación Social - Diseño y nuevas Interfaces - Interacción Persona
-                            Ordenador -
-                            Desarrollo de Nuevos Productos - Apropiación tecnológica.</h6>
-                    </li>
-                    <li>
-                        <h4> JOSÉ A. MONCADA</h4>
-                        <h5>MSc. / Tecnologías de la Información y Comunicaciones | MSc. Ciencia de Datos</h5>
-                        <h6>Interacción Persona Ordenador - Análisis de datos - Programación - Ingeniería de Software -
-                            Agile -
-                            Ecosistemas de aplicaciones.</h6>
-                    </li>
-                    <li>
-                        <h4>NÉSTOR TOBAR A.</h4>
-                        <h5>Ma. / Diseño de Experiencia de Usuario | Ma. Gestión de Innovación</h5>
-                        <h6>Experiencia de Usuario - Arquitectura de la información - Diseño de Interacción - Gestión de
-                            la
-                            Innovación - Diseño de interfaz de Usuario.</h6>
-                    </li>
-                </ul>
-                </p>
+            </div>
+
+            <div>
+                <div class="ux-section-title">
+                    Facilitadores expertos
+                </div>
+
+                <div id="ux-experts-container">
+
+                </div>
+
             </div>
 
             <div>
