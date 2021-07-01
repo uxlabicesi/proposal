@@ -72,7 +72,7 @@ function buildCommercialFromArray(commercialArrayItem) {
 
 function buildActivityFromArray(activityArrayItem) {
     return {
-        id: activityArrayItem[0],
+        id: parseInt(activityArrayItem[0]),
         name: activityArrayItem[1],
         description: activityArrayItem[2],
         nick: activityArrayItem[3],

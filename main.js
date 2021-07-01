@@ -117,12 +117,12 @@ function transfomCountersConfiguration() {
     return counters;
 }
 
-function buildHTMLSelectors(selectors, parentActivity) {
+function buildHTMLSelectors(selectors, parentActivity, parentActivityNick) {
     let assignedSelectors = selectors.filter((selector) => selector.parent === parentActivity);
     let view = `<div class="container">`;
     assignedSelectors.forEach((selector) => {
         view += `<label for="ux-fc-project-type" class="form-label">${selector.name}</label>`;
-        view += `<select class="form-select" aria-label="Default select example" id="ux-fc-project-type">`
+        view += `<select class="form-select" aria-label="Default select example" id="ux-form-sel-${parentActivityNick}">`
         selector.options.forEach((option, index) => {
             let valueText = option.name + " (" + option.description + ")";
             view += `<option value="${index}">${valueText}</option>`;
@@ -132,13 +132,13 @@ function buildHTMLSelectors(selectors, parentActivity) {
     return view;
 }
 
-function buildHTMLCounters(counters, parentActivity) {
+function buildHTMLCounters(counters, parentActivity, parentActivityNick) {
     let assignedCounters = counters.filter((counter) => counter.parent === parentActivity);
     let view = `<div class="container">`;
     assignedCounters.forEach((counter) => {
         view += `<div id="ux-fc-project-hours-container" class="mb-3  p-1">
                     <label for="ux-fc-project-hours" class="form-label">${counter.name}</label>
-                    <input type="number" class="form-control" id="ux-fc-project-hours"
+                    <input type="number" class="form-control" id="ux-form-count-${parentActivityNick}-${parentActivity}-${counter.group}"
                         placeholder="${counter.description}">
                 </div>`
     });
@@ -158,20 +158,20 @@ async function buildActivitiesSelection() {
                 <input class="form-check-input" type="checkbox" id="ux-test-${activity.nick}-check">            
                 <label class="form-check-label" for="ux-test-${activity.nick}-check">${activity.name}</label>
             </div>        
-            <div class="mb-3 p-1 m-1 visually-hidden" id="ux-test-${activity.nick}-container">
-                <label for="" class="form-label h6">Estimación</label>
+            <div class="mb-3 p-1 m-1 mt-3 border border-1 visually-hidden" id="ux-test-${activity.nick}-container">
+                <label for="" class="form-label h6 p-2">Estimación</label>
             </div> `;
         activitiesSelectorContainerTag.innerHTML += activityItem;
         // build the config items
         let configContainer = document.querySelector(`#ux-test-${activity.nick}-container`);
-        configContainer.innerHTML += buildHTMLSelectors(transformedSelectors, parseInt(activity.id));
-        configContainer.innerHTML += buildHTMLCounters(transformedCounters, parseInt(activity.id));
+        configContainer.innerHTML += buildHTMLSelectors(transformedSelectors, activity.id, activity.nick);
+        configContainer.innerHTML += buildHTMLCounters(transformedCounters, activity.id, activity.nick);
     });
     activities.forEach((activity) => {
         // assign behavior with checkbox
         let checkboxContainer = document.querySelector(`#ux-test-${activity.nick}-check`);        
         let configContainer = document.querySelector(`#ux-test-${activity.nick}-container`);
-        checkboxContainer.addEventListener("click", function () {                
+        checkboxContainer.addEventListener("click", function () {
             if (checkboxContainer.checked === true) {
                 configContainer.classList.remove('visually-hidden');
             } else {
@@ -239,7 +239,7 @@ window.addEventListener("load", function () {
         clientNameTags.forEach(element => {
             element.innerHTML = "<b>" + clientNameTag.value + "</b>"
         });
-
+        
         // Program price update
         let programValue = 0;
         let pricePerHour = 350000;
@@ -249,25 +249,84 @@ window.addEventListener("load", function () {
             programValue = numberOfHours * pricePerHour;
             projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
         } else {
-            /*if (heuristicTestCheckTag.checked === true) {
-                const number = parseInt(document.querySelector("#ux-test-ht-number").value);
-                const duration = parseInt(document.querySelector("#ux-test-ht-duration").value);
-                programValue += number * (duration / 60) * pricePerHour;
-                projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
+
+            // Usability test activity
+            let utCheck = document.querySelector("#ux-test-ut-check");
+            if (utCheck|utCheck.checked === true) {
+                // obtain selection level 
+                const utTestLevelSelection = document.querySelector("#ux-form-sel-ut");                
+                let levelValue = parseInt(utTestLevelSelection.value)+1; // zero control
+                // obtain number of user
+                const utTestUserNumber = document.querySelector("#ux-form-count-ut-1-1");                
+                let userNumber = parseInt(utTestUserNumber.value)
+                // add value per hours                
+                let hours = levelValue * userNumber;
+                programValue += hours * pricePerHour;                
             }
-            if (usabilityTestCheckTag.checked === true) {
-                const number = parseInt(document.querySelector("#ux-test-ut-number").value);
-                const duration = parseInt(document.querySelector("#ux-test-ut-duration").value);
-                programValue += number * (duration / 60) * pricePerHour;
-                projectPriceTag.innerHTML = "$" + programValue.toLocaleString();
-            }*/
+
+            // Heuristic test activity
+            let htCheck = document.querySelector("#ux-test-ht-check");
+            if (htCheck|htCheck.checked === true) {
+                // obtain expert number
+                const htTestExpertNumber = document.querySelector("#ux-form-count-ht-2-2");                
+                let expertNumber = parseInt(htTestExpertNumber.value); // zero control
+                // obtain timer per expert
+                const utTestExpertTime = document.querySelector("#ux-form-count-ht-2-3");                
+                let expertTime = parseInt(utTestExpertTime.value);
+                // add value per hours                
+                let hours = expertNumber * expertTime;
+                console.log(hours);
+                programValue += hours * pricePerHour;    
+            }
+
+            // Generative test activity
+            let gtCheck = document.querySelector("#ux-test-gt-check");
+            if (gtCheck|gtCheck.checked === true) {
+                // obtain time
+                const gtTestTime = document.querySelector("#ux-form-count-gt-3-4");                
+                let hours = parseInt(gtTestTime.value);
+                console.log(hours);
+                programValue += hours * pricePerHour;    
+            }
+
+             // UI Design Activity
+             let uiDesignCkeck = document.querySelector("#ux-test-ui-check");
+             if (uiDesignCkeck|uiDesignCkeck.checked === true) {
+                 // obtain time
+                 const uiDesignTime = document.querySelector("#ux-form-count-ui-4-5");                
+                 let hours = parseInt(uiDesignTime.value);
+                 console.log(hours);
+                 programValue += hours * pricePerHour;    
+             }
+
+             // Design Patterns Activity
+             let designPatternsCheck = document.querySelector("#ux-test-pi-check");
+             if (designPatternsCheck|designPatternsCheck.checked === true) {
+                 // obtain time
+                 const time = document.querySelector("#ux-form-count-pi-5-6");                
+                 let hours = parseInt(time.value);
+                 console.log(hours);
+                 programValue += hours * pricePerHour;    
+             }
+
+             // User Persona Activity
+             let userPersonaCheck = document.querySelector("#ux-test-up-check");
+             if (userPersonaCheck|userPersonaCheck.checked === true) {
+                 // obtain time
+                 const time = document.querySelector("#ux-form-count-up-6-7");                
+                 let hours = parseInt(time.value);
+                 programValue += hours * pricePerHour;    
+             }
+             projectPriceTag.innerHTML = "$" + programValue.toLocaleString();            
         }
+
+        console.log("total horas: " + (programValue/pricePerHour));
+        console.log("total programa: " + (programValue.toLocaleString()));
 
         updateExpertTeamReport();
         updateCommercialTeamReport();
         updateActivitiesReport();
     });
-
 
     function updateActivitiesReport() {
         //form         
