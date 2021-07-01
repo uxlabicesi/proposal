@@ -1,15 +1,24 @@
+*{
+    color: #000757;
+    font-size: 13pt;
+    text-align: left;
+}
+
 .ux-section-title{
-    background: #740053;
+    /*background: #740053;*/
     width: 100%;
-    color: #FFFFFF;
+    color: #CE1074;
     text-decoration: none;
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: 600;
     padding: 10px;
     margin: 10px 0px;
 }
 
 #ux-report-program-name{
-    font-size: 22pt;
-    text-align: center;
+    font-size: 25pt;
+    text-align: left;
+}
+.ux-report-expert-container{
+    background-color: #F6F6F6;
 }
