@@ -10,53 +10,44 @@ let typeOfProject = 0;
 
 async function buildConfigForm() {
     await updateValues();
-    buildExpertsSelection();
-    buildCommercialSelection();
-    buildActivitiesSelection();
-
-    console.log(Component(activities[0]));
-    console.log(Subcomponent(activityConfigs[6]));
-    let subTest = Subcomponent(activityConfigs[4]);
-    activityConfigs.forEach(config => {
-        subTest.addLocalItem(config);
-    });
-    console.log( subTest.localcontent);
-   
+    await buildExpertsSelection();
+    await buildCommercialSelection();
+    await buildActivitiesSelection();
 }
 
-
-
-function Component (data) {
+function Component(data) {
     return {
-        id : data.id,
-        name : data.name,
-        description : data.description,        
-        subs : [],
-        addSub : function(sub) {
-            this.subs.push(sub);
+        parent: data.parent,
+        name: data.name,
+        type: data.type,
+        group: data.group,
+        description: data.description,
+        options: [],
+        addOption: function (option) {
+            this.options.push(option);
         }
     }
 }
 
 function Subcomponent(data) {
     return {
-        parent : data.parent,
-        name : data.name,
-        description : data.description, 
-        type : data.type,       
-        localparent : data.localparent,        
-        defaultvalue : "",
-        localcontent : [],
+        parent: data.parent,
+        name: data.name,
+        description: data.description,
+        type: data.type,
+        group: data.group,
+        defaultvalue: "",
+        localcontent: [],
         addLocalItem: function (config) {
-            if(config.parent === this.parent &&
-                config.localparent === this.localparent ){
-                this.localcontent.push(config); 
+            if (config.parent === this.parent &&
+                config.localparent === this.localparent) {
+                this.localcontent.push(config);
             }
         }
     }
 }
 
-function buildExpertsSelection() {
+async function buildExpertsSelection() {
     const teamSelectorContainerTag = document.querySelector("#ux-form-team-container");
     teamSelectorContainerTag.innerHTML = "";
     expertsTeam.forEach((element, index) => {
@@ -69,7 +60,7 @@ function buildExpertsSelection() {
     });
 }
 
-function buildCommercialSelection() {
+async function buildCommercialSelection() {
     const commercialTeamSelectorContainerTag = document.querySelector("#ux-form-commercial-team-container");
     commercialTeamSelectorContainerTag.innerHTML = "";
     comercialTeam.forEach((element, index) => {
@@ -82,103 +73,120 @@ function buildCommercialSelection() {
     });
 }
 
-
-
-
-function buildActivitiesSelection() {
-    const activitiesSelectorContainerTag = document.querySelector("#ux-form-activities-container");
-    activitiesSelectorContainerTag.innerHTML = "";
-    /*let values = [];
-    let localValues = [];
-    activityConfigs.forEach((config)=>{               
-        if(config.parent === 1){
-            localValues.push(config);
+function transfomSelectorsConfiguration() {
+    // obtain max group value
+    let maxGroup = -1;
+    for (let index = 0; index < activityConfigs.length; index++) {
+        if (activityConfigs[index].group > maxGroup) {
+            maxGroup = activityConfigs[index].group;
         }
-        values.push(localValues);        
-    });
-    console.log(values);
-    let maxParent = -1;
-    activityConfigs.forEach((config) => {
-        if (parseInt(config.parent) > maxParent) {
-            maxParent = parseInt(config.parent);
+    }
+    let selectors = [];
+    for (let index = 0; index <= maxGroup; index++) {
+        let grupo = activityConfigs.filter((config) => config.group === index);
+        for (let i = 0; i < grupo.length; i++) {
+            if (grupo[i].type === "selector-item") {
+                selectors.push(new Component(grupo[i]));
+                for (let j = i + 1; j < grupo.length; j++) {
+                    selectors[selectors.length - 1].addOption(new Subcomponent(grupo[j]));
+                }
+                break;
+            }
         }
-    });
-    console.log(maxParent);*/
-    /*
-    let selectorItems = activityConfigs.filter((config) => config.type === "selector-item");
-    let selectorItemsParent = selectorItems.filter((config) => config.parent === "1");
-    console.log(selectorItemsParent);
-    */
-    activities.forEach((activity) => {
-        let itemConfigs = activityConfigs.filter((config) => config.parent === activity.id);
-        const expertView =
-        `<div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="ux-test-${activity.nick}-check">            
-            <label class="form-check-label" for="ux-test-${activity.nick}-check">${activity.name}</label>
-        </div>
-
-        <div id="ux-test-${activity.nick}-container" class="mb-3 visually-hidden">
-
-        </div>`;
-        /*visually-hidden*/
-        activitiesSelectorContainerTag.innerHTML += expertView;
-
-        const containerIdName = `#ux-test-${activity.nick}-container`;
-        const containerConfig = document.querySelector(containerIdName);
-        itemConfigs.forEach((config) => {
-            if (config.type === "selector-item") {
-                containerConfig.innerHTML += `<label for="ux-test-${activity.nick}-selector-${config.optvalue}" class="form-label">${config.name}</label>`;
-                containerConfig.innerHTML += `<select class="form-select" aria-label="Default select example" id="ux-test-${activity.nick}-selector-${config.optvalue}"> </select>`;
-            }
-        });
-        /*//let itemConfigSelectorOption = itemConfigs.filter( (config) => config.parent === activity.id );
-        const selectorIdName = `#ux-test-${activity.nick}-selector-${"0"}`;        
-        const containerSelector = document.querySelector(selectorIdName);        
-        containerSelector.innerHTML+=`<label for="ux-test-${activity.nick}-selector-${"0"}" class="form-label">${"0"}</label>`;
-        itemConfigs.forEach((configB) => {                        
-            if(configB.type==="selector-option"){ 
-                containerConfig.innerHTML+=`<select class="form-select" aria-label="Default select example" id="ux-test-${activity.nick}-selector-${configB.optvalue}"> </select>`;                                
-            }
-        });*/
-        /*
-        <!-- <option selected>Selecciona el tipo de programa</option> -->
-        <option value="1">Diagnóstico</option>
-        <option value="2">Bolsa de horas</option>
-        <option value="3">A la medida</option>
-        */
-
-
-        containerConfig.appendChild(document.createElement('p'));
-
-        /*`
-        
-        <div class="container">
-            <div class="form-check">
-                <label for="ux-test-ut-number" class="form-label">Número de usuarios</label>
-                <input type="number" class="form-control" id="ux-test-ut-number"
-                    placeholder="¿Número de usuarios?">
-            </div>
-            <div class="form-check">
-                    <label for="ux-test-ut-duration" class="form-label">Tiempo por usuario (en
-                    minutos)</label>
-                    <input type="number" class="form-control" id="ux-test-ut-duration" placeholder="60">
-                </div>
-            </div>
-        `;*/
-
-    });
+    }
+    return selectors;
 }
 
+function transfomCountersConfiguration() {
+    // obtain max group value
+    let maxGroup = -1;
+    for (let index = 0; index < activityConfigs.length; index++) {
+        if (activityConfigs[index].group > maxGroup) {
+            maxGroup = activityConfigs[index].group;
+        }
+    }
+    let counters = [];
+    for (let index = 0; index <= maxGroup; index++) {
+        let grupo = activityConfigs.filter((config) => config.group === index);
+        for (let i = 0; i < grupo.length; i++) {
+            if (grupo[i].type === "count") {
+                counters.push(new Component(grupo[i]));
+            }
+        }
+    }
+    return counters;
+}
 
+function buildHTMLSelectors(selectors, parentActivity) {
+    let assignedSelectors = selectors.filter((selector) => selector.parent === parentActivity);
+    let view = `<div class="container">`;
+    assignedSelectors.forEach((selector) => {
+        view += `<label for="ux-fc-project-type" class="form-label">${selector.name}</label>`;
+        view += `<select class="form-select" aria-label="Default select example" id="ux-fc-project-type">`
+        selector.options.forEach((option, index) => {
+            let valueText = option.name + " (" + option.description + ")";
+            view += `<option value="${index}">${valueText}</option>`;
+        });
+        view += `</select></div>`
+    });
+    return view;
+}
+
+function buildHTMLCounters(counters, parentActivity) {
+    let assignedCounters = counters.filter((counter) => counter.parent === parentActivity);
+    let view = `<div class="container">`;
+    assignedCounters.forEach((counter) => {
+        view += `<div id="ux-fc-project-hours-container" class="mb-3  p-1">
+                    <label for="ux-fc-project-hours" class="form-label">${counter.name}</label>
+                    <input type="number" class="form-control" id="ux-fc-project-hours"
+                        placeholder="${counter.description}">
+                </div>`
+    });
+    view += `</div>`
+    return view;
+}
+
+async function buildActivitiesSelection() {
+    const activitiesSelectorContainerTag = document.querySelector("#ux-form-activities-container");
+    activitiesSelectorContainerTag.innerHTML = "";
+    let transformedSelectors = transfomSelectorsConfiguration();
+    let transformedCounters = transfomCountersConfiguration();
+    activities.forEach((activity) => {
+        // build each activity selector checkbox
+        let activityItem =
+            `<div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ux-test-${activity.nick}-check">            
+                <label class="form-check-label" for="ux-test-${activity.nick}-check">${activity.name}</label>
+            </div>        
+            <div class="mb-3 p-1 m-1 visually-hidden" id="ux-test-${activity.nick}-container">
+                <label for="" class="form-label h6">Estimación</label>
+            </div> `;
+        activitiesSelectorContainerTag.innerHTML += activityItem;
+        // build the config items
+        let configContainer = document.querySelector(`#ux-test-${activity.nick}-container`);
+        configContainer.innerHTML += buildHTMLSelectors(transformedSelectors, parseInt(activity.id));
+        configContainer.innerHTML += buildHTMLCounters(transformedCounters, parseInt(activity.id));
+    });
+    activities.forEach((activity) => {
+        // assign behavior with checkbox
+        let checkboxContainer = document.querySelector(`#ux-test-${activity.nick}-check`);        
+        let configContainer = document.querySelector(`#ux-test-${activity.nick}-container`);
+        checkboxContainer.addEventListener("click", function () {                
+            if (checkboxContainer.checked === true) {
+                configContainer.classList.remove('visually-hidden');
+            } else {
+                configContainer.classList.add('visually-hidden');
+            }
+        });
+    });
+}
 
 async function assignPresetValues() {
 
 }
 
 window.addEventListener("load", function () {
-
     buildConfigForm();
-    assignPresetValues();
 
     let clientNameTag = document.querySelector("#ux-form-client-name");
     let projectNameTag = document.querySelector("#ux-form-project-name");
@@ -192,27 +200,6 @@ window.addEventListener("load", function () {
     let projectHoursTag = document.querySelector("#ux-fc-project-hours");
     let projectPriceTag = document.querySelector("#program-value-text");
     let projectTypeSelectorTag = document.querySelector("#ux-fc-project-type");
-
-    /*
-         let usabilityTestCheckTag = document.querySelector("#ux-test-ut-check");
-         usabilityTestCheckTag.addEventListener("change", function () {
-             let container = document.querySelector("#ux-test-ut-container");
-             if (usabilityTestCheckTag.checked === true) {
-                 container.classList.remove('visually-hidden');
-             } else {
-                 container.classList.add('visually-hidden');
-             }
-         });
-
-         let heuristicTestCheckTag = document.querySelector("#ux-test-ht-check");
-         heuristicTestCheckTag.addEventListener("change", function () {
-             let container = document.querySelector("#ux-test-ht-container");
-             if (heuristicTestCheckTag.checked === true) {
-                 container.classList.remove('visually-hidden');
-             } else {
-                 container.classList.add('visually-hidden');
-             }
-         });*/
 
     let hasHoursSwitchTag = document.querySelector("#ux-hour-switch");
     hasHoursSwitchTag.addEventListener("change", function () {

@@ -81,11 +81,11 @@ function buildActivityFromArray(activityArrayItem) {
 
 function buildActivityConfigFromArray(activityConfigArrayItem) {
     return {       
-        parent: activityConfigArrayItem[1],
+        parent: parseInt(activityConfigArrayItem[1]),
         name: activityConfigArrayItem[2],
         description: activityConfigArrayItem[3],
         type: activityConfigArrayItem[4],
-        localparent: activityConfigArrayItem[5],
+        group: parseInt(activityConfigArrayItem[5]),
         defaultvalue: activityConfigArrayItem[6],
     }
 }
