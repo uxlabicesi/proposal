@@ -13,54 +13,56 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="src/dist/html2pdf.bundle.min.js"></script>
-    <link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-32x32.png" sizes="32x32" />
-<link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-192x192.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-180x180.png" />
+    <link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-32x32.png"
+        sizes="32x32" />
+    <link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-192x192.png"
+        sizes="192x192" />
+    <link rel="apple-touch-icon"
+        href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-180x180.png" />
+    <script src="src/papaparse.min.js"></script>
 </head>
 
 <body>
-    <div class="ux-form container">     
-        <img width="50px" height="50px" src="https://uxlabicesi.com/wp-content/uploads/2020/04/logo-uxlab-gradient.svg" alt="" loading="lazy">   
-        <h1>Generador de propuestas</h1>        
+    <div class="ux-form container">
+        <div class="d-flex">
+            <img class="m-2" width="50px" height="50px"
+                src="https://uxlabicesi.com/wp-content/uploads/2020/04/logo-uxlab-gradient.svg" alt="" loading="lazy">
+            <h1 class="m-2">Generador de propuestas</h1>
+        </div>
         <section>
 
             <div class="container">
+
                 <div class="mb-3">
-                    <label for="ux-fc-client" class="form-label">Cliente</label>
-                    <input type="text" class="form-control" id="ux-fc-client" placeholder="Nuestro cliente preferido">
+                    <label for="ux-form-client-name" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" id="ux-form-client-name"
+                        placeholder="Nuestro cliente preferido">
                 </div>
 
                 <div class="mb-3">
-                    <label for="ux-fc-project" class="form-label">Nombre del proyecto</label>
-                    <input type="text" class="form-control" id="ux-fc-project" placeholder="Proyecto increible de UX">
+                    <label for="ux-form-project-name" class="form-label">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="ux-form-project-name"
+                        placeholder="Proyecto increible de UX">
                 </div>
 
                 <div class="mb-3">
-                    <label for="" class="form-label">¿Quiénes son los facilitadores?</label>
-                    <div class="container" id="ux-team-container">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="ux-team-check-1" checked>
-                            <label class="form-check-label" for="ux-team-check-1">Daniel Gómez</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="2" id="ux-team-check-2" checked>
-                            <label class="form-check-label" for="ux-team-check-1">Javier A. Aguirre</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="3" id="ux-team-check-3" checked>
-                            <label class="form-check-label" for="ux-team-check-1">José A. Moncada</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="4" id="ux-team-check-4" checked>
-                            <label class="form-check-label" for="flexCheckChecked1">Néstor A. Tobar</label>
-                        </div>
+                    <label for="ux-team-container" class="form-label">¿Quiénes son los facilitadores?</label>
+                    <div class="container" id="ux-form-team-container">
+                        <!-- content replace -->
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ux-commercial-team-container" class="form-label">¿Quiénes son el equipo
+                        comercial?</label>
+                    <div class="container" id="ux-form-commercial-team-container">
+                        <!-- content replace -->
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="ux-fc-project-type" class="form-label">¿Qué tipo de programa deseas construir?</label>
                     <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
-                        <option selected>Selecciona el tipo de programa</option>
                         <option value="1">Diagnóstico</option>
                         <option value="2">Bolsa de horas</option>
                         <option value="3">A la medida</option>
@@ -82,9 +84,9 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">¿Qué actividades se incluyen?</label>
-                    <div class="container" id="ux-team-container">
+                    <div class="container" id="ux-form-activities-container">
 
-                        <div class="form-check">
+                        <!-- <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="ux-test-ut-check">
                             <label class="form-check-label" for="ux-test-ut-check">
                                 Pruebas de Usabilidad
@@ -97,16 +99,16 @@
                                     <label for="ux-test-ut-number" class="form-label">Número de usuarios</label>
                                     <input type="number" class="form-control" id="ux-test-ut-number"
                                         placeholder="¿Número de usuarios?">
-                                </div>   
+                                </div>
                                 <div class="form-check">
-                                    <label for="ux-test-ut-duration" class="form-label">Tiempo por usuario (en minutos)</label>
-                                    <input type="number" class="form-control" id="ux-test-ut-duration"
-                                        placeholder="60">
-                                </div>                       
+                                    <label for="ux-test-ut-duration" class="form-label">Tiempo por usuario (en
+                                        minutos)</label>
+                                    <input type="number" class="form-control" id="ux-test-ut-duration" placeholder="60">
+                                </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="form-check">
+                        <!-- <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="ux-test-ht-check">
                             <label class="form-check-label" for="ux-test-ht-check">
                                 Evaluación Heurística
@@ -119,58 +121,19 @@
                                     <label for="ux-test-ht-number" class="form-label">Número de expertos</label>
                                     <input type="number" class="form-control" id="ux-test-ht-number"
                                         placeholder="¿Número de expertos?">
-                                </div>   
+                                </div>
                                 <div class="form-check">
-                                    <label for="ux-test-ht-duration" class="form-label">Tiempo por experto (en minutos)</label>
-                                    <input type="number" class="form-control" id="ux-test-ht-duration"
-                                        placeholder="60">
-                                </div>                       
+                                    <label for="ux-test-ht-duration" class="form-label">Tiempo por experto (en
+                                        minutos)</label>
+                                    <input type="number" class="form-control" id="ux-test-ht-duration" placeholder="60">
+                                </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
 
-
-                
-
-                <!-- <div class="mb-3">
-                    <label for="" class="form-label">¿Qué actividades de diseño se incluyen?</label>
-                    <div class="container" id="ux-team-container">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Pruebas de Usabilidad
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Evaluación Heurística
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="" class="form-label">¿Qué actividades de prototipado se incluyen?</label>
-                    <div class="container" id="ux-team-container">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Pruebas de Usabilidad
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Evaluación Heurística
-                            </label>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="mb-3">
+                <!--  <div class="mb-3">
                     <label for="ux-fc-project-complexity" class="form-label">Nivel de complejidad</label>
                     <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
                         <option selected>Selecciona el nivel de complejidad</option>
@@ -178,7 +141,7 @@
                         <option value="2">Intermedio</option>
                         <option value="3">Avanzado</option>
                     </select>
-                </div>
+                </div> -->
 
                 <br>
                 <div class="mb-3">
@@ -194,8 +157,7 @@
 
     <main id="ux-main-container" class="container">
         <img src="images/banner-educon.jpg" class="img-fluid" alt="banner-educon">
-
-        <div id="ux-program-name" class="ux-section-title">
+        <div id="ux-report-program-name" class="ux-section-title">
         </div>
 
         <section>
@@ -205,7 +167,8 @@
                 </div>
                 <p>
                     El Centro de Consultoría y Educación Continua ofrece servicios de capacitación y consultoría a
-                    organizaciones que, como <span class="client-text"> XXXXXXXXXXXX </span>, buscan fortalecer su
+                    organizaciones que, como <span class="ux-report-client-name"> XXXXXXXXXXXX </span>, buscan
+                    fortalecer su
                     conocimiento en temas o áreas específicas, las
                     cuales pueden ser cubiertas con programas curriculares y docentes más convenientes. Los servicios
                     pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las instalaciones de la
@@ -237,13 +200,15 @@
                 </div>
                 <p>
                     El acompañamiento descrito en la presente propuesta está dirigido a
-                    <span class="client-text"> XXXXXXXXXXXX </span>
+                    <span class="ux-report-client-name"> XXXXXXXXXXXX </span>
                 </p>
             </div>
             <div>
                 <div class="ux-section-title">
                     IV. Estructura del Programa
                 </div>
+
+
                 <p> El proyecto se estructura desde las necesidades expuestas en la revisión de los productos de la
                     organización, tanto para productos actuales como a futuros desarrollos. Se podrá contar
                     entrenamiento* en las fases que la organización estime conveniente.
@@ -255,16 +220,11 @@
 
                 <p>Algunos de los servicios de evaluación que pueden tener lugar durante el proceso podrían ser:</p>
 
-                <b>Evaluación de expertos / Pruebas heurísticas</b>
-                <p>La evaluación heurística es un método de inspección en el que un grupo reducido de expertos, en base
-                    a su propia experiencia, fundamentándose en reconocidos principios de usabilidad (heurísticos), y
-                    apoyándose en guías elaboradas para tal fin, evalúan de forma independiente el producto,
-                    contrastando finalmente los resultados con el resto de evaluadores. (...) Utilizando principios
-                    heurísticos de accesibilidad y llevando a cabo la prueba con evaluadores con experiencia y
-                    conocimientos de accesibilidad, este método permite no sólo descubrir problemas de uso, sino también
-                    de acceso. Hassan (2004).</p>
+                <div id="ux-report-activities-container" class="container">
 
-                <b>Evaluación con usuario / Pruebas de usabilidad</b>
+                </div>
+
+                <!--   <b>Evaluación con usuario / Pruebas de usabilidad</b>
                 <p>Las pruebas con usuarios reales son técnicas de evaluación de usabilidad tradicionalmente usadas en
                     DCU. Se trata de pruebas realizadas en “laboratorio”, en las que se observa cómo un grupo de
                     usuarios, reales o potenciales, lleva a cabo una serie de tareas encomendadas, para posteriormente
@@ -284,7 +244,7 @@
                     la investigación de UX. No sólo representa a algún usuario concreto sino al conjunto de ellos, se
                     puede entender como el personaje típico de la conducta, la actitud, las habilidades y los contextos
                     de todos los usuarios potenciales. Chang (2017).
-                </p>
+                </p> -->
 
             </div>
             <div>
@@ -336,8 +296,8 @@
                     Facilitadores expertos
                 </div>
 
-                <div id="ux-experts-container">
-
+                <div class="container" id="ux-report-experts-container">
+                    <!-- content replace -->
                 </div>
 
             </div>
@@ -357,7 +317,7 @@
                     <b>
                         <h6>Valor del programa en pesos*</h6>
                     </b>
-                    <p><span id="program-value-text">$....</span></p>
+                    <p><span id="program-value-text"><!-- content replace --></span></p>
                     <em>* Mas 1,5% de impuesto procultura</em>
 
                 </p>
@@ -389,25 +349,18 @@
                 <div class="ux-section-title">
                     IX. Información de contacto
                 </div>
-                <p>
-                    <br>
-                    <b>ANGELA MARIA BONILLA C.</b><br>
-                    Ejecutiva de Relaciones Empresariales <br>
-                    Tel. (572) 555 23 34 Ext. 8016<br>
-                    Cel 314 799 1062<br>
-                    E-mail: ambonilla@icesi.edu.co<br>
-                    <br>
-                    <b>PATRICIA RUIZ B.</b>
-                    Directora Mercadeo Institucional<br>
-                    Tel. (572) 555 23 34 Ext. 8711<br>
-                    E-mail: pruiz@icesi.edu.co<br>
-                </p>
+
+                <div class="container" id="ux-report-commercial-container">
+                    <!-- content replace -->
+                </div>
+
             </div>
         </section>
     </main>
     <br>
     <br>
     <script src="main.js"></script>
+    <script src="obtainData.js"></script>
 </body>
 
 </html>
