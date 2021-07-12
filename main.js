@@ -139,6 +139,7 @@ function buildHTMLCounters(counters, parentActivity, parentActivityNick) {
     view += `</div>`
     return view;
 }
+
 async function buildActivitiesSelection() {
     const activitiesSelectorContainerTag = document.querySelector("#ux-form-activities-container");
     activitiesSelectorContainerTag.innerHTML = "";
