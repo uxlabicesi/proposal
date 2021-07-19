@@ -7,15 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotizador UXLAB</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
     </script>
     <script src="src/dist/html2pdf.bundle.min.js"></script>
-    <link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-32x32.png"
+    <link rel="icon"
+        href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-32x32.png"
         sizes="32x32" />
-    <link rel="icon" href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-192x192.png"
+    <link rel="icon"
+        href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-192x192.png"
         sizes="192x192" />
     <link rel="apple-touch-icon"
         href="https://uxlabicesi.com/wp-content/uploads/2020/06/cropped-favicon-uxlab-gradient-180x180.png" />
@@ -26,7 +31,8 @@
     <div class="ux-form container">
         <div class="d-flex">
             <img class="m-2" width="50px" height="50px"
-                src="https://uxlabicesi.com/wp-content/uploads/2020/04/logo-uxlab-gradient.svg" alt="" loading="lazy">
+                src="https://uxlabicesi.com/wp-content/uploads/2020/04/logo-uxlab-gradient.svg"
+                alt="" loading="lazy">
             <h1 class="m-2">Generador de propuestas</h1>
         </div>
         <section>
@@ -46,14 +52,16 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="ux-team-container" class="form-label">¿Quiénes son los facilitadores?</label>
+                    <label for="ux-team-container" class="form-label">¿Quiénes son los
+                        facilitadores?</label>
                     <div class="container" id="ux-form-team-container">
                         <!-- content replace -->
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="ux-commercial-team-container" class="form-label">¿Quiénes son el equipo
+                    <label for="ux-commercial-team-container" class="form-label">¿Quiénes son el
+                        equipo
                         comercial?</label>
                     <div class="container" id="ux-form-commercial-team-container">
                         <!-- content replace -->
@@ -61,8 +69,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="ux-fc-project-type" class="form-label">¿Qué tipo de programa deseas construir?</label>
-                    <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
+                    <label for="ux-fc-project-type" class="form-label">¿Qué tipo de programa deseas
+                        construir?</label>
+                    <select class="form-select" aria-label="Default select example"
+                        id="ux-fc-project-type">
                         <option value="1">Diagnóstico</option>
                         <option value="2">Bolsa de horas</option>
                         <option value="3">A la medida</option>
@@ -71,7 +81,8 @@
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="ux-hour-switch">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">¿Se tiene el número de horas?</label>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">¿Se tiene el número
+                        de horas?</label>
                 </div>
 
                 <br>
@@ -87,66 +98,68 @@
                     <div class="container" id="ux-form-activities-container">
 
                         <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="ux-test-ut-check">
-                            <label class="form-check-label" for="ux-test-ut-check">
-                                Pruebas de Usabilidad
-                            </label>
-                        </div>
-                        <div id="ux-test-ut-container" class="mb-3 visually-hidden">
-                            <label for="" class="form-label">Configurar las pruebas de usabilidad</label>
-                            <div class="container">
-                                <div class="form-check">
-                                    <label for="ux-test-ut-number" class="form-label">Número de usuarios</label>
-                                    <input type="number" class="form-control" id="ux-test-ut-number"
-                                        placeholder="¿Número de usuarios?">
-                                </div>
-                                <div class="form-check">
-                                    <label for="ux-test-ut-duration" class="form-label">Tiempo por usuario (en
-                                        minutos)</label>
-                                    <input type="number" class="form-control" id="ux-test-ut-duration" placeholder="60">
-                                </div>
-                            </div>
-                        </div> -->
+                                        <input class="form-check-input" type="checkbox" value="" id="ux-test-ut-check">
+                                        <label class="form-check-label" for="ux-test-ut-check">
+                                            Pruebas de Usabilidad
+                                        </label>
+                                    </div>
+                                    <div id="ux-test-ut-container" class="mb-3 visually-hidden">
+                                        <label for="" class="form-label">Configurar las pruebas de usabilidad</label>
+                                        <div class="container">
+                                            <div class="form-check">
+                                                <label for="ux-test-ut-number" class="form-label">Número de usuarios</label>
+                                                <input type="number" class="form-control" id="ux-test-ut-number"
+                                                placeholder="¿Número de usuarios?">
+                                            </div>
+                                            <div class="form-check">
+                                                <label for="ux-test-ut-duration" class="form-label">Tiempo por usuario (en
+                                                    minutos)</label>
+                                                    <input type="number" class="form-control" id="ux-test-ut-duration" placeholder="60">
+                                                </div>
+                                            </div>
+                                        </div> -->
 
                         <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="ux-test-ht-check">
-                            <label class="form-check-label" for="ux-test-ht-check">
-                                Evaluación Heurística
-                            </label>
-                        </div>
-                        <div id="ux-test-ht-container" class="mb-3 visually-hidden">
-                            <label for="" class="form-label">Configurar la evaluación heurística</label>
-                            <div class="container">
-                                <div class="form-check">
-                                    <label for="ux-test-ht-number" class="form-label">Número de expertos</label>
-                                    <input type="number" class="form-control" id="ux-test-ht-number"
-                                        placeholder="¿Número de expertos?">
-                                </div>
-                                <div class="form-check">
-                                    <label for="ux-test-ht-duration" class="form-label">Tiempo por experto (en
-                                        minutos)</label>
-                                    <input type="number" class="form-control" id="ux-test-ht-duration" placeholder="60">
-                                </div>
-                            </div>
-                        </div> -->
+                                            <input class="form-check-input" type="checkbox" value="" id="ux-test-ht-check">
+                                            <label class="form-check-label" for="ux-test-ht-check">
+                                                Evaluación Heurística
+                                            </label>
+                                        </div>
+                                        <div id="ux-test-ht-container" class="mb-3 visually-hidden">
+                                            <label for="" class="form-label">Configurar la evaluación heurística</label>
+                                            <div class="container">
+                                                <div class="form-check">
+                                                    <label for="ux-test-ht-number" class="form-label">Número de expertos</label>
+                                                    <input type="number" class="form-control" id="ux-test-ht-number"
+                                                    placeholder="¿Número de expertos?">
+                                                </div>
+                                                <div class="form-check">
+                                                    <label for="ux-test-ht-duration" class="form-label">Tiempo por experto (en
+                                                        minutos)</label>
+                                                        <input type="number" class="form-control" id="ux-test-ht-duration" placeholder="60">
+                                                    </div>
+                                                </div>
+                                            </div> -->
 
                     </div>
                 </div>
 
                 <!--  <div class="mb-3">
-                    <label for="ux-fc-project-complexity" class="form-label">Nivel de complejidad</label>
-                    <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
-                        <option selected>Selecciona el nivel de complejidad</option>
-                        <option value="1">Básico</option>
-                        <option value="2">Intermedio</option>
-                        <option value="3">Avanzado</option>
-                    </select>
-                </div> -->
+                                        <label for="ux-fc-project-complexity" class="form-label">Nivel de complejidad</label>
+                                        <select class="form-select" aria-label="Default select example" id="ux-fc-project-type">
+                                            <option selected>Selecciona el nivel de complejidad</option>
+                                            <option value="1">Básico</option>
+                                            <option value="2">Intermedio</option>
+                                            <option value="3">Avanzado</option>
+                                        </select>
+                                    </div> -->
 
                 <br>
                 <div class="mb-3">
-                    <button type="button" id="ux-btn-update" class="btn btn-primary">Actualizar</button>
-                    <button type="button" id="ux-btn-pdf" class="btn btn-primary">Generar PDF</button>
+                    <button type="button" id="ux-btn-update"
+                        class="btn btn-primary">Actualizar</button>
+                    <button type="button" id="ux-btn-pdf" class="btn btn-primary">Generar
+                        PDF</button>
                 </div>
 
             </div>
@@ -166,19 +179,25 @@
                     I. Introduccion
                 </div>
                 <p>
-                    El Centro de Consultoría y Educación Continua ofrece servicios de capacitación y consultoría a
-                    organizaciones que, como <span class="ux-report-client-name"> XXXXXXXXXXXX </span>, buscan
+                    El Centro de Consultoría y Educación Continua ofrece servicios de capacitación y
+                    consultoría a
+                    organizaciones que, como <span class="ux-report-client-name"> XXXXXXXXXXXX
+                    </span>, buscan
                     fortalecer su
-                    conocimiento en temas o áreas específicas, las
-                    cuales pueden ser cubiertas con programas curriculares y docentes más convenientes. Los servicios
-                    pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las instalaciones de la
-                    empresa o a
-                    través de internet.
+                    conocimiento en temas o áreas específicas, las cuales pueden ser cubiertas con
+                    programas
+                    curriculares y docentes más convenientes. Los servicios
+                    pueden ser ofrecidos en las instalaciones de la Universidad Icesi, en las
+                    instalaciones de la
+                    empresa o a través de internet.
                 </p>
                 <p>
-                    Los programas de capacitación empresarial del Centro de Consultoría y Educación Continua son
-                    desarrollados a la medida de las necesidades de la empresa y promueven la adquisición de
-                    conocimientos, habilidades y actitudes que conducen a la formación de modelos de comportamientos
+                    Los programas de capacitación empresarial del Centro de Consultoría y Educación
+                    Continua son
+                    desarrollados a la medida de las necesidades de la empresa y promueven la
+                    adquisición de
+                    conocimientos, habilidades y actitudes que conducen a la formación de modelos de
+                    comportamientos
                     valiosos y deseables en los
                     profesionales vinculados a la organización.
                 </p>
@@ -188,9 +207,12 @@
                     II. Objetivos
                 </div>
                 <p>
-                    El plan de mentoring descrito en la presente propuesta tiene como propósito evaluar los productos
-                    digitales de la organización con el fin de encontrar los puntos “de dolor” y que están afectando la
-                    experiencia de los usuarios para posteriormente proponer mejoras que ejemplifican la interacción
+                    El plan de mentoring descrito en la presente propuesta tiene como propósito
+                    evaluar los productos
+                    digitales de la organización con el fin de encontrar los puntos “de dolor” y que
+                    están afectando la
+                    experiencia de los usuarios para posteriormente proponer mejoras que
+                    ejemplifican la interacción
                     adecuada del producto.
                 </p>
             </div>
@@ -209,16 +231,21 @@
                 </div>
 
 
-                <p> El proyecto se estructura desde las necesidades expuestas en la revisión de los productos de la
-                    organización, tanto para productos actuales como a futuros desarrollos. Se podrá contar
+                <p> El proyecto se estructura desde las necesidades expuestas en la revisión de los
+                    productos de la
+                    organización, tanto para productos actuales como a futuros desarrollos. Se podrá
+                    contar
                     entrenamiento* en las fases que la organización estime conveniente.
-                    *Los entrenamientos tendrán un costo adicional al plan de horas que se tenga para el mes y requieren
+                    *Los entrenamientos tendrán un costo adicional al plan de horas que se tenga
+                    para el mes y requieren
                     de una cotización acotada al tema en cuestión.</p>
 
-                <p>De común acuerdo, la organización y el equipo de UXLab Icesi establecerán los objetivos para cada
+                <p>De común acuerdo, la organización y el equipo de UXLab Icesi establecerán los
+                    objetivos para cada
                     mes.</p>
 
-                <p>Algunos de los servicios de evaluación que pueden tener lugar durante el proceso podrían ser:</p>
+                <p>Algunos de los servicios de evaluación que pueden tener lugar durante el proceso
+                    podrían ser:</p>
 
                 <div id="ux-report-activities-container" class="container">
                     <!-- content replace -->
@@ -232,8 +259,9 @@
                     En este modelo se hace un mentoring por horas mensuales según el plan acordado.
                 </p>
                 <p>
-                    Al finalizar cada ciclo se entregará un reporte de horas que soporte los hitos logrados o en proceso
-                    de desarrollo.
+                    Al finalizar cada ciclo se entregará un reporte de horas que soporte los hitos
+                    logrados o en proceso
+                    de desarrollo
                 </p>
             </div>
 
@@ -244,27 +272,39 @@
                 </div>
 
                 <p>
-                    UXLab Icesi ayuda a las organizaciones a incorporar la UX a su proceso de desarrollo a través de la
-                    sensibilización y entendimiento del concepto, la investigación de usuarios, la capacitación de
+                    UXLab Icesi ayuda a las organizaciones a incorporar la UX a su proceso de
+                    desarrollo a través de la
+                    sensibilización y entendimiento del concepto, la investigación de usuarios, la
+                    capacitación de
                     equipos de diseño/desarrollo y la evaluación de sus productos digitales.
                 </p>
 
                 <p>
-                    UXLab Icesi es una iniciativa del Departamento de diseño de la Universidad Icesi e Innlab que busca
-                    acercar las organizaciones al concepto de Experiencia de Usuario a través de entrenamiento y
+                    UXLab Icesi es una iniciativa del Departamento de diseño de la Universidad Icesi
+                    e Innlab que busca
+                    acercar las organizaciones al concepto de Experiencia de Usuario a través de
+                    entrenamiento y
                     servicios de evaluación y consultoría.
                 </p>
 
                 <p>
-                    Es un espacio para la investigación, formación y mejora en el conocimiento de las técnicas y
-                    metodologías que permiten generar productos altamente innovadores, así como mejorar productos
-                    existentes gracias a técnicas de diseño, prototipado, evaluación y mejora en sus funcionalidades. El
-                    UXLab cuenta con el apoyo de expertos en Diseño Centrado en el Usuario (DCU), User Research,
-                    usabilidad, accesibilidad, testing, experiencia de usuario (UX), arquitectura de información, diseño
-                    de interacción entre otras. Cuenta además con recursos tecnológicos, metodológicos y laboratorios
-                    dotados y acondicionados para la
-                    realización de cada uno de los estudios y entrenamiento que demanden los proyectos. Expertos que
-                    podrían incorporarse al proyecto según los requerimientos del ciclo.
+                    Es un espacio para la investigación, formación y mejora en el conocimiento de
+                    las técnicas y
+                    metodologías que permiten generar productos altamente innovadores, así como
+                    mejorar productos
+                    existentes gracias a técnicas de diseño, prototipado, evaluación y mejora en sus
+                    funcionalidades.
+                    El UXLab cuenta con el apoyo de expertos en Diseño Centrado en el Usuario (DCU),
+                    User Research,
+                    usabilidad, accesibilidad, testing, experiencia de usuario (UX), arquitectura de
+                    información, diseño
+                    de interacción entre otras. Cuenta además con recursos tecnológicos,
+                    metodológicos y laboratorios
+                    dotados y acondicionados para la realización de cada uno de los estudios y
+                    entrenamiento que
+                    demanden los proyectos.
+                    Expertos que podrían incorporarse al proyecto según los requerimientos del
+                    ciclo.
                 </p>
             </div>
 
@@ -287,14 +327,12 @@
                     requeridas para ejecutar las pruebas correspondientes dada la complejidad del
                     producto digital indicado por el cliente
 
-                    <!--En este modelo se cotizan tres planes por cantidad de horas, esta bolsa de horas se repartirá entre
-                    las actividades que se requieran en cada ciclo. A continuación, presentamos los planes.-->
-
                     <b>
                         <h6>Valor del programa en pesos*</h6>
                     </b>
 
-                    <p><span id="program-value-text"><!-- content replace --></span></p>
+                    <p><span id="program-value-text">
+                            <!-- content replace --></span></p>
                     <em>* Mas 1,5% de impuesto procultura</em>
 
                 </p>
@@ -304,18 +342,25 @@
                 <div class="ux-section-title">
                     IX. Compromisos
                 </div>
-                <p> A continuación, se describen el conjunto de compromisos para la realización del presente proyecto
+                <p> A continuación, se describen el conjunto de compromisos para la realización del
+                    presente proyecto
                 </p>
                 <ul>
-                    <li>El cliente se compromete a facilitar los recursos técnicos, humanos y de información
+                    <li>El cliente se compromete a facilitar los recursos técnicos, humanos y de
+                        información
                         necesarios para el desarrollo del proyecto.</li>
-                    <li>El cumplimiento de los tiempos estimados dependerá de la entrega oportuna de la información
-                        requerida, reuniones pactadas o de la retroalimentación de los procesos que a bien se
+                    <li>El cumplimiento de los tiempos estimados dependerá de la entrega oportuna de
+                        la información
+                        requerida, reuniones pactadas o de la retroalimentación de los procesos que
+                        a bien se
                         realicen.</li>
-                    <li>La Universidad se compromete a velar por el tratamiento respetuoso de los derechos de autor
+                    <li>La Universidad se compromete a velar por el tratamiento respetuoso de los
+                        derechos de autor
                         y de la información que sea suministrada.</li>
-                    <li>La universidad se reserva el derecho a utilizar el proceso y/o resultado del estudio de la
-                        consultoría para fines netamente académicos velando por no afectar la integridad del cliente
+                    <li>La universidad se reserva el derecho a utilizar el proceso y/o resultado del
+                        estudio de la
+                        consultoría para fines netamente académicos velando por no afectar la
+                        integridad del cliente
                         o revelar datos considerados como confidenciales.</li>
                 </ul>
 
@@ -336,7 +381,7 @@
     <br>
     <br>
     <script src="obtainData.js"></script>
-    <script src="main.js"></script>    
+    <script src="main.js"></script>
 </body>
 
 </html>
